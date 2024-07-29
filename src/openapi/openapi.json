@@ -1,0 +1,152 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "OpenAPI definition",
+      "version": "v0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8089/SpringMVC",
+        "description": "Generated server url"
+      }
+    ],
+    "paths": {
+      "/User/authenticate": {
+        "post": {
+          "tags": [
+            "user-controller"
+          ],
+          "operationId": "authenticate",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AuthenticateResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/User/Register": {
+        "post": {
+          "tags": [
+            "user-controller"
+          ],
+          "operationId": "register",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistrationRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "202": {
+              "description": "Accepted",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/User/activate-account": {
+        "get": {
+          "tags": [
+            "user-controller"
+          ],
+          "operationId": "confirm",
+          "parameters": [
+            {
+              "name": "token",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "AuthenticationRequest": {
+          "required": [
+            "email",
+            "password"
+          ],
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "maxLength": 2147483647,
+              "minLength": 8,
+              "type": "string"
+            }
+          }
+        },
+        "AuthenticateResponse": {
+          "type": "object",
+          "properties": {
+            "token": {
+              "type": "string"
+            }
+          }
+        },
+        "RegistrationRequest": {
+          "required": [
+            "email",
+            "firstname",
+            "lastname",
+            "password"
+          ],
+          "type": "object",
+          "properties": {
+            "firstname": {
+              "type": "string"
+            },
+            "lastname": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "maxLength": 2147483647,
+              "minLength": 8,
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
