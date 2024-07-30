@@ -7,18 +7,26 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './user/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './user/register/register.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
+import { NavbarComponent } from './dashboard/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent,
+    SidebarComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     HttpClient

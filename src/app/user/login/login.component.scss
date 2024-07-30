@@ -1,0 +1,82 @@
+// styles.scss
+
+// Background
+body {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  // Card Styles
+  .card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem;
+  }
+  
+  .card h3 {
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 1rem;
+  }
+  
+  .card .form-label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .card .form-control {
+    border-radius: 50px;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+  }
+  
+  .card .input-group-text {
+    border-radius: 50px 0 0 50px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+  }
+  
+  .card .btn-primary {
+    background-color: #ff7e5f;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card .btn-primary:hover {
+    background-color: #feb47b;
+  }
+  
+  .card .btn-link {
+    color: #ff7e5f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .card .btn-link:hover {
+    color: #feb47b;
+  }
+  
+  .alert-danger {
+    border-radius: 50px;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  
+  // Responsive Design
+  @media (max-width: 576px) {
+    .card {
+      padding: 1rem;
+    }
+  }
+  

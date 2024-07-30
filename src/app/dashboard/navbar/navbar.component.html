@@ -1,0 +1,31 @@
+<nav class="navbar">
+    <div class="navbar-brand">
+      <span class="brand-name">Jawiii</span>
+    </div>
+    <ul class="navbar-menu">
+      <li class="navbar-item">
+        <button (click)="onProfileClick()" class="profile-button">
+          <i class="fas fa-user"></i>
+        </button>
+        <div class="profile-menu" *ngIf="showProfileMenu">
+          <button (click)="onViewUsersClick()">
+            <i class="fas fa-users"></i> View Users
+          </button>
+          <button (click)="onLogoutClick()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+      </li>
+      <li class="navbar-item">
+        <button (click)="onLoginClick()" class="navbar-button">
+          <i class="fas fa-key"></i> Login
+        </button>            
+      </li>
+      <li class="navbar-item">
+        <button (click)="onRegisterClick()" class="navbar-button">
+          <i class="fas fa-user-edit"></i> Register
+        </button>   
+      </li>
+    </ul>
+  </nav>
+  
