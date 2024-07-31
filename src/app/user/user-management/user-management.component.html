@@ -1,0 +1,54 @@
+<p>user-management works!</p>
+<div>
+    <h2>User Management</h2>
+  
+    <!-- User List -->
+    <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Enabled</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.enabled }}</td>
+            <td>
+              <button (click)="editUser(user)">Edit</button>
+              <button (click)="user.id !== undefined && deleteUser(user.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <!-- Add/Edit User Form -->
+    <div *ngIf="isEditing || newUser">
+      <h3>{{ isEditing ? 'Edit User' : 'Add User' }}</h3>
+      <form (ngSubmit)="isEditing ? updateUser() : addUser()">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" [(ngModel)]="currentUser.firstName" name="firstName" required>
+  
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" [(ngModel)]="currentUser.lastName" name="lastName" required>
+  
+        <label for="email">Email:</label>
+        <input type="email" id="email" [(ngModel)]="currentUser.email" name="email" required>
+  
+        <label for="password">Password:</label>
+        <input type="password" id="password" [(ngModel)]="currentUser.password" name="password" *ngIf="!isEditing" required>
+  
+        <label for="enabled">Enabled:</label>
+        <input type="checkbox" id="enabled" [(ngModel)]="currentUser.enabled" name="enabled">
+  
+        <button type="submit">{{ isEditing ? 'Update' : 'Add' }}</button>
+        <button type="button" (click)="resetForm()">Cancel</button>
+      </form>
+    </div>
+  </div>

@@ -29,7 +29,8 @@ export class RegisterComponent {
         body: this.registryRequest
       }).subscribe({
         next: () => {
-          this.router.navigate(['activated-account']);
+          alert('Registration successful! Redirecting to login page...');
+          this.router.navigate(['login']);
         },
         error: (err) => {
           this.errorMsg = err.error.validationErrors;

@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { NavbarComponent } from './dashboard/navbar/navbar.component';
+import { UserManagementComponent } from './user/user-management/user-management.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NavbarComponent } from './dashboard/navbar/navbar.component';
     RegisterComponent,
     DashboardComponent,
     SidebarComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserManagementComponent
   ],
   imports: [
     BrowserModule,

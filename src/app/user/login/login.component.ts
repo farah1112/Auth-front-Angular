@@ -26,7 +26,8 @@ export class LoginComponent {
       next: (res):void => {
         //save the token 
         this.tokenService.token = res.token as string;
-        this.router.navigate(['/']);
+        alert('Login successful! Redirecting to dashboard...');
+        this.router.navigate(['/dashboard']);
       },
       error: (err): void =>{
         console.log(err);
