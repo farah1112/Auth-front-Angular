@@ -9,7 +9,13 @@ import { UserControllerService } from 'src/app/services/services';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  registryRequest:RegistrationRequest= {email: '', password: '', firstname: '', lastname: ''}
+  registryRequest: RegistrationRequest = { 
+    email: '', 
+    password: '', 
+    firstname: '', 
+    lastname: '', 
+    role: 'USER' 
+  };
   errorMsg: Array<string> = [];
 
   constructor(
@@ -23,18 +29,23 @@ export class RegisterComponent {
   login() {
     this.router.navigate(['login']);
     }
+   
     register() {
       this.errorMsg = [];
-      this.authService.register({
-        body: this.registryRequest
-      }).subscribe({
+      this.authService.register({ body: this.registryRequest }).subscribe({
         next: () => {
           alert('Registration successful! Redirecting to login page...');
           this.router.navigate(['login']);
         },
         error: (err) => {
-          this.errorMsg = err.error.validationErrors;
+          console.error('Registration error:', err); // Log the error for debugging
+          this.errorMsg = err.error || ['Registration failed']; // Display a general error message if specific validation errors are not available
         }
       });
     }
+    goHome() {
+      this.router.navigate(['home']);
+    }
+    
+    
 }

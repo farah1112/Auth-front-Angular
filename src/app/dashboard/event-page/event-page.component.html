@@ -1,0 +1,87 @@
+<app-navbar></app-navbar>
+<div class="event-page">
+    <button class="add-event-button" (click)="openAddEventModal()">
+        <i class="fa fa-plus"></i> Ajouter un événement
+    </button>
+    
+    <div class="event-container">
+        <div *ngFor="let event of events" class="event-item">
+            <div class="event-header">
+                <h3>{{ event.title }}</h3>
+                <div class="event-actions">
+                    <button (click)="openEditEventModal(event)"><i class="fa fa-edit"></i> Edit</button>
+                    <button (click)="deleteEvent(event.id)"><i class="fa fa-trash"></i> Delete</button>
+                    <button (click)="openViewEventModal(event)"><i class="fa fa-eye"></i> Consulter</button>
+                </div>
+            </div>
+            <p>{{ event.description }}</p>
+            <p><strong>Category:</strong> {{ event.category }}</p>
+            <p><strong>Date:</strong> {{ event.startDate }} - {{ event.endDate }}</p>
+            <p><strong>Location:</strong> {{ event.location }}</p>
+            <img [src]="getPhotoUrl(event.photo)" alt="Event Photo">
+        </div>
+    </div>
+
+    <!-- Add Event Modal -->
+    <div class="modal" *ngIf="showAddEventModal">
+        <div class="modal-content">
+            <span class="close" (click)="closeAddEventModal()">&times;</span>
+            <h2><i class="fa fa-calendar-plus"></i> Ajouter un événement</h2>
+            <form (ngSubmit)="addEvent()">
+                <input [(ngModel)]="newEvent.title" name="title" placeholder="Title" required>
+                <select [(ngModel)]="newEvent.category" name="category" required>
+                    <option *ngFor="let category of eventCategories" [value]="category">{{ category }}</option>
+                </select>
+                <textarea [(ngModel)]="newEvent.description" name="description" placeholder="Description" required></textarea>
+                <input [(ngModel)]="newEvent.startDate" name="startDate" type="datetime-local" required>
+                <input [(ngModel)]="newEvent.endDate" name="endDate" type="datetime-local" required>
+                <input [(ngModel)]="newEvent.location" name="location" placeholder="Location" required>
+                <input type="file" (change)="onFileChange($event)" required>
+                <button type="submit"><i class="fa fa-plus"></i> Add Event</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Event Modal -->
+    <div class="modal" *ngIf="showEditEventModal">
+        <div class="modal-content">
+            <span class="close" (click)="closeEditEventModal()">&times;</span>
+            <h2><i class="fa fa-calendar-edit"></i> Edit Event</h2>
+            <form (ngSubmit)="updateEvent()">
+                <input [(ngModel)]="selectedEvent.title" name="title" placeholder="Title" required>
+                <select [(ngModel)]="selectedEvent.category" name="category" required>
+                    <option *ngFor="let category of eventCategories" [value]="category">{{ category }}</option>
+                </select>
+                <textarea [(ngModel)]="selectedEvent.description" name="description" placeholder="Description" required></textarea>
+                <input [(ngModel)]="selectedEvent.startDate" name="startDate" type="datetime-local" required>
+                <input [(ngModel)]="selectedEvent.endDate" name="endDate" type="datetime-local" required>
+                <input [(ngModel)]="selectedEvent.location" name="location" placeholder="Location" required>
+                <input type="file" (change)="onFileChange($event)">
+                <button type="submit"><i class="fa fa-edit"></i> Update Event</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- View Event Modal -->
+    <div class="modal" *ngIf="showViewEventModal">
+        <div class="modal-content">
+            <span class="close" (click)="closeViewEventModal()">&times;</span>
+            <h2><i class="fa fa-calendar-day"></i> Event Details</h2>
+            <div>
+                <h3>{{ selectedEvent.title }}</h3>
+                <p>{{ selectedEvent.description }}</p>
+                <p><strong>Category:</strong> {{ selectedEvent.category }}</p>
+                <p><strong>Date:</strong> {{ selectedEvent.startDate }} - {{ selectedEvent.endDate }}</p>
+                <p><strong>Location:</strong> {{ selectedEvent.location }}</p>
+                <img [src]="getPhotoUrl(selectedEvent.photo)" alt="Event Photo">
+            </div>
+        </div>
+    </div>
+    <div class="pagination-controls">
+        <button (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+        <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1">Next</button>
+      </div>
+      
+      
+</div>

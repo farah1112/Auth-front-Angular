@@ -1,6 +1,7 @@
-/* tslint:disable */
-/* eslint-disable */
+
 export interface RegistrationRequest {
+  id?: number;
+  role: any;
   email: string;
   firstname: string;
   lastname: string;

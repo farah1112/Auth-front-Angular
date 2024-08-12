@@ -1,0 +1,103 @@
+<div class="container-fluid p-0">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">JAWII</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#about-us">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#events">Events</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contact-us">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<div id="home" class="hero-section">
+  <div class="hero-image">
+    <img src="./assets/4.jpg" alt="Hero Image">
+    <div class="hero-caption">
+      <h1>Welcome to Our Event</h1>
+      <p>Join us for an unforgettable experience</p>
+      <a class="btn btn-light btn-lg" routerLink="/register">Subscribe Now</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <!-- About Us Section -->
+<div id="about-us" class="about-us-section mt-5 text-center">
+  <div class="overlay">
+    <h2>About Us</h2>
+    <p class="lead">We are dedicated to organizing the best events for you. Our mission is to deliver unforgettable experiences that leave lasting memories.</p>
+  </div>
+</div>
+
+<!-- Upcoming Events Section with Card Animations -->
+<div id="events" class="upcoming-events-section mt-5 text-center">
+  <h2>Upcoming Events</h2>
+  <div *ngIf="noEventsMessage; else eventsList">
+    <p>{{ noEventsMessage }}</p>
+  </div>
+  <ng-template #eventsList>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let event of events">
+        <div class="card event-card" [@fadeIn]>
+          <img class="card-img-top" [src]="event.photo" alt="Event image">
+          <div class="card-body">
+            <h5 class="card-title">{{ event.title }}</h5>
+            <p class="card-text">{{ event.description }}</p>
+            <a [routerLink]="['/event', event.id]" class="btn btn-secondary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+
+  <!-- Contact Us Section -->
+  <div id="contact-us" class="contact-us-section mt-5 text-center">
+    <h2>Contact Us</h2>
+    <div class="map-container mb-4">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51085.99114264419!2d10.152648191806396!3d36.84548288495842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd34c79ebdb3af%3A0x13da2e9f0bf98fe6!2sCtre%20Urbain%20Nord%2C%20Tunis!5e0!3m2!1sfr!2stn!4v1722619027052!5m2!1sfr!2stn" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" class="contact-form mx-auto">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="contact.name" name="name">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" required [(ngModel)]="contact.email" name="email">
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea class="form-control" id="message" rows="4" required [(ngModel)]="contact.message" name="message"></textarea>
+      </div>
+      <div class="button-group">
+        <button type="submit" class="btn btn-pink">Submit</button>
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white text-center py-4 mt-5">
+    <p>&copy; 2024 EventApp. All Rights Reserved.</p>
+  </footer>
+</div>

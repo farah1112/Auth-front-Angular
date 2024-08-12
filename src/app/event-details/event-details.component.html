@@ -1,0 +1,18 @@
+<div *ngIf="event" class="container mt-5">
+  <div class="rating-container">
+    <div class="rating">
+      <span class="star" *ngFor="let star of stars; let i = index" (click)="rateEvent(i + 1)">
+        <i [class.fas]="i < currentRating" [class.far]="i >= currentRating" class="fa-star"></i>
+      </span>
+    </div>
+  </div>
+  
+  <h2>{{ event.title }}</h2>
+  <img [src]="event.photo" alt="Event image" class="img-fluid">
+  <p><strong>Category:</strong> {{ event.category }}</p>
+  <p><strong>Date:</strong> {{ event.startDate }} - {{ event.endDate }}</p>
+  <p><strong>Location:</strong> {{ event.location }}</p>
+  <p>{{ event.description }}</p>
+  
+  <button class="btn btn-primary">Subscribe Now</button>
+</div>

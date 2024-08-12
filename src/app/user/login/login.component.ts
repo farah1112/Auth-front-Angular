@@ -18,27 +18,35 @@ export class LoginComponent {
     private authService: UserControllerService,
     private tokenService : TokenService
   ){}
-    login() {
-    this.errorMsg= [];
+  login() {
+    this.errorMsg = [];
     this.authService.authenticate({
       body: this.authRequest
     }).subscribe({
-      next: (res):void => {
-        //save the token 
+      next: (res): void => {
+        // Save the token and role
         this.tokenService.token = res.token as string;
-        alert('Login successful! Redirecting to dashboard...');
-        this.router.navigate(['/dashboard']);
+        this.tokenService.role = res.role as string;
+  
+        // Redirect based on role
+        if (this.tokenService.role === 'ADMIN') {
+          alert('Login successful! Redirecting to dashboard...');
+          this.router.navigate(['/dashboard']);
+        } else {
+          alert('Login successful! Redirecting to home...');
+          this.router.navigate(['/home']);
+        }
       },
-      error: (err): void =>{
+      error: (err): void => {
         console.log(err);
-        if(err.error.validationErrors) {
-          this.errorMsg = err.error.validationErrors
+        if (err.error.validationErrors) {
+          this.errorMsg = err.error.validationErrors;
         } else {
           this.errorMsg.push(err.error.validationErrors);
         }
       }
     });
-    }
+  }
     register() {
       this.router.navigate(['register']);
       }

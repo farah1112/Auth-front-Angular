@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   showProfileMenu = false;
 
-  // Inject Router service in the constructor
   constructor(private router: Router) { }
 
   onProfileClick() {
@@ -25,15 +24,18 @@ export class NavbarComponent {
   }
   
   onLoginClick() {
-    this.router.navigate(['/login']); // Use the router to navigate
+    this.router.navigate(['/login']); 
   }
 
   onRegisterClick() {
-    this.router.navigate(['/register']); // Use the router to navigate
+    this.router.navigate(['/register']); 
   }
 
   toggleProfileMenu() {
     this.showProfileMenu = !this.showProfileMenu;
+  }
+  onAddEventClick(): void {
+    this.router.navigate(['/events']); 
   }
 
 }

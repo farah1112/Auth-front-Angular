@@ -24,4 +24,13 @@ export class TokenService {
    get token(): string  {
        return localStorage.getItem('token') as string ;
    }
+
+   set role(value: string) {
+    localStorage.setItem('role', value);
+  }
+
+  get role(): string {
+    // Ensure that `role` is never null by providing a default value
+    return localStorage.getItem('role') || '';
+  }
 }
