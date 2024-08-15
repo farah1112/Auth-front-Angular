@@ -15,4 +15,15 @@
   <p>{{ event.description }}</p>
   
   <button class="btn btn-primary">Subscribe Now</button>
+  <div *ngIf="similarEvents.length > 0" class="similar-events mt-5">
+    <h3>Similar Events</h3>
+    <div class="event-card" *ngFor="let similarEvent of similarEvents">
+      <img [src]="similarEvent.photo" alt="Event image" class="img-fluid">
+      <h4>{{ similarEvent.title }}</h4>
+      <p>{{ similarEvent.description }}</p>
+      <p><strong>Category:</strong> {{ similarEvent.category }}</p>
+      <p><strong>Date:</strong> {{ similarEvent.startDate }} - {{ similarEvent.endDate }}</p>
+      <a [routerLink]="['/events', similarEvent.id]" class="btn btn-primary">View Details</a>
+    </div>
+  </div>
 </div>

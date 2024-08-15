@@ -116,4 +116,47 @@
       }
     }
   }
+  .similar-events {
+    border-top: 1px solid #ddd;
+    padding-top: 2rem;
+  }
+  
+  .event-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .event-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .event-card h4 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .event-card p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+  
+  .event-card a.btn-primary {
+    background-color: #f78504;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+  
+  .event-card a.btn-primary:hover {
+    background-color: #e57e00;
+  }
   

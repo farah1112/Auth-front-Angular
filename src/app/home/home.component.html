@@ -36,9 +36,6 @@
 </div>
 
 
-
-
-
   <!-- About Us Section -->
 <div id="about-us" class="about-us-section mt-5 text-center">
   <div class="overlay">
@@ -46,7 +43,6 @@
     <p class="lead">We are dedicated to organizing the best events for you. Our mission is to deliver unforgettable experiences that leave lasting memories.</p>
   </div>
 </div>
-
 <!-- Upcoming Events Section with Card Animations -->
 <div id="events" class="upcoming-events-section mt-5 text-center">
   <h2>Upcoming Events</h2>
@@ -66,8 +62,35 @@
         </div>
       </div>
     </div>
+    <button (click)="toggleAllEvents()" class="btn btn-primary mt-3">
+      {{ showAllEvents ? 'Hide All' : 'See All' }}
+    </button>
   </ng-template>
 </div>
+
+<!-- All Events Section -->
+<div id="all-events" class="upcoming-events-section mt-5 text-center" *ngIf="showAllEvents">
+  <h2>All Events</h2>
+  <div *ngIf="noAllEventsMessage; else allEventsList">
+    <p>{{ noAllEventsMessage }}</p>
+  </div>
+  <ng-template #allEventsList>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let event of allEvents">
+        <div class="card event-card" [@fadeIn]>
+          <img class="card-img-top" [src]="event.photo" alt="Event image">
+          <div class="card-body">
+            <h5 class="card-title">{{ event.title }}</h5>
+            <p class="card-text">{{ event.description }}</p>
+            <a [routerLink]="['/event', event.id]" class="btn btn-secondary">Learn More</a>
+            <button (click)="rateEvent(event.id)" class="btn btn-warning mt-2">Rate This Event</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
 
 
   <!-- Contact Us Section -->

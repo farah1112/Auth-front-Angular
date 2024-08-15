@@ -33,7 +33,10 @@ export class EventService {
   updateEvent(id: number, formData: FormData): Observable<EventModel> {
     return this.http.put<EventModel>(`${this.baseUrl}/event/${id}`, formData);
   }
-  rateEvent(eventId: number, data: { rating: number }): Observable<void> {
-    return this.http.post<void>(`${this.baseUrl}/events/${eventId}/rate`, data);
+  rateEvent(eventId: number, rating: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}/event/${eventId}/rate`, { rating });
+  }
+  getSimilarEvents(eventId: number): Observable<EventModel[]> {
+    return this.http.get<EventModel[]>(`${this.baseUrl}/similar/${eventId}`);
   }
 }
