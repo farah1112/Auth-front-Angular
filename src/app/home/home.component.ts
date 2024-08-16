@@ -9,7 +9,7 @@ import { EventService } from '../dashboard/event-page/event.service';
   styleUrls: ['./home.component.scss'],
   animations: [
     trigger('fadeIn', [
-      transition('void => *', [
+      transition('voida => *', [
         style({ opacity: 0 }),
         animate('1s', style({ opacity: 1 }))
       ])

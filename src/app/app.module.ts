@@ -13,6 +13,7 @@ import { NavbarComponent } from './dashboard/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { EventPageComponent } from './dashboard/event-page/event-page.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,9 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSnackBarModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

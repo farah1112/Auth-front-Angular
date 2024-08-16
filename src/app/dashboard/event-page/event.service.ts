@@ -39,4 +39,8 @@ export class EventService {
   getSimilarEvents(eventId: number): Observable<EventModel[]> {
     return this.http.get<EventModel[]>(`${this.baseUrl}/similar/${eventId}`);
   }
+
+  subscribe(eventId: number, email: string): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/subscribe`, { eventId, email });
+  }
 }

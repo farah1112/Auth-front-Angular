@@ -14,7 +14,7 @@
   <p><strong>Location:</strong> {{ event.location }}</p>
   <p>{{ event.description }}</p>
   
-  <button class="btn btn-primary">Subscribe Now</button>
+  <button class="btn btn-primary" (click)="subscribeToEvent()">Subscribe Now</button>
   <div *ngIf="similarEvents.length > 0" class="similar-events mt-5">
     <h3>Similar Events</h3>
     <div class="event-card" *ngFor="let similarEvent of similarEvents">
@@ -23,7 +23,7 @@
       <p>{{ similarEvent.description }}</p>
       <p><strong>Category:</strong> {{ similarEvent.category }}</p>
       <p><strong>Date:</strong> {{ similarEvent.startDate }} - {{ similarEvent.endDate }}</p>
-      <a [routerLink]="['/events', similarEvent.id]" class="btn btn-primary">View Details</a>
+      <a [routerLink]="['/event', similarEvent.id]" class="btn btn-primary" (click)="logEvent(similarEvent.id)">View Details</a>
     </div>
   </div>
 </div>
