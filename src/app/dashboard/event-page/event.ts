@@ -18,6 +18,7 @@ export interface EventModel {
   location: string;
   photo: string;
   rating?: number; 
+  createdDate: string; 
 }
 
 export type NewEvent = Omit<EventModel, 'id'>;

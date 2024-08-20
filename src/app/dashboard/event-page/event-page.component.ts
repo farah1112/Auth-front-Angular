@@ -32,15 +32,17 @@ export class EventPageComponent implements OnInit {
   loadEvents(): void {
     this.eventService.getAllEvents(this.currentPage, this.eventsPerPage).subscribe({
       next: (response) => {
-        console.log('Response:', response); // Debugging line
-        this.events = response.content;
+        console.log('Response:', response);
+        this.events = response.content; // Change this if your structure is different
         this.totalPages = response.totalPages;
       },
       error: (err) => {
-        console.error('Error fetching events:', err); // Debugging line
+        console.error('Error fetching events:', err);
       }
     });
-  }
+}
+
+  
   
   openAddEventModal(): void {
     this.showAddEventModal = true;
@@ -135,7 +137,8 @@ export class EventPageComponent implements OnInit {
       startDate: '',
       endDate: '',
       location: '',
-      photo: ''
+      photo: '',
+      createdDate: ''
     };
   }
 
@@ -148,7 +151,8 @@ export class EventPageComponent implements OnInit {
       startDate: '',
       endDate: '',
       location: '',
-      photo: ''
+      photo: '',
+      createdDate: ''
     };
   }
 

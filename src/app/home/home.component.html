@@ -28,14 +28,12 @@
   <div class="hero-image">
     <img src="./assets/4.jpg" alt="Hero Image">
     <div class="hero-caption">
-      <h1>Welcome to Our Event</h1>
+      <h1>Welcome to Our Plateforme </h1>
       <p>Join us for an unforgettable experience</p>
       <a class="btn btn-light btn-lg" routerLink="/register">Subscribe Now</a>
     </div>
   </div>
 </div>
-
-
   <!-- About Us Section -->
 <div id="about-us" class="about-us-section mt-5 text-center">
   <div class="overlay">
@@ -46,12 +44,13 @@
 <!-- Upcoming Events Section with Card Animations -->
 <div id="events" class="upcoming-events-section mt-5 text-center">
   <h2>Upcoming Events</h2>
+  
   <div *ngIf="noEventsMessage; else eventsList">
     <p>{{ noEventsMessage }}</p>
   </div>
   <ng-template #eventsList>
     <div class="row">
-      <div class="col-md-4" *ngFor="let event of events">
+      <div class="col-md-4" *ngFor="let event of filteredEvents">
         <div class="card event-card" [@fadeIn]>
           <img class="card-img-top" [src]="event.photo" alt="Event image">
           <div class="card-body">
@@ -67,6 +66,7 @@
     </button>
   </ng-template>
 </div>
+
 
 <!-- All Events Section -->
 <div id="all-events" class="upcoming-events-section mt-5 text-center" *ngIf="showAllEvents">
