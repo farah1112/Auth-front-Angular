@@ -159,4 +159,39 @@
   .event-card a.btn-primary:hover {
     background-color: #e57e00;
   }
-  
+
+/* Return to Home Button Styles */
+.btn-return-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute; /* Adjust positioning as needed */
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.5rem; /* Adjust size of icon */
+  color: #fff;
+  background-color: #f78504;
+  border: none;
+  border-radius: 50%; /* Makes the button circular */
+  width: 3rem; /* Adjust size of button */
+  height: 3rem; /* Adjust size of button */
+  text-decoration: none;
+  text-align: center;
+  line-height: 3rem; /* Center the icon vertically */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  i {
+    margin: 0; /* Remove margin for the icon */
+    font-size: 1.5rem; /* Adjust size of icon */
+  }
+
+  &:hover {
+    background-color: #e57e00;
+    transform: scale(1.1); /* Slightly increase size on hover */
+  }
+
+  &:active {
+    background-color: #f78504;
+    transform: scale(1); /* Reset size on click */
+  }
+}

@@ -158,4 +158,19 @@ export class HomeComponent implements OnInit {
       }
     }
   }
+  onCategoryChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const selectedCategory = selectElement.value;
+    
+    if (selectedCategory) {
+      this.filteredEvents = this.latestEvents.filter(
+        (event) => event.category === selectedCategory
+      );
+    } else {
+      this.filteredEvents = this.latestEvents;
+    }
+     // Set no events message if no events are found
+  this.noEventsMessage = this.filteredEvents.length === 0 ? 'No events found for this category' : '';
+  }
+  
 }

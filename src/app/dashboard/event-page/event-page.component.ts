@@ -157,8 +157,8 @@ export class EventPageComponent implements OnInit {
   }
 
   getPhotoUrl(photo: string): string {
-    return this.baseUrl + photo;
-  }
+    return photo.startsWith('http') ? photo : `${this.baseUrl}${photo}`;
+}
   previousPage(): void {
     if (this.currentPage > 0) {
       this.currentPage--;

@@ -429,3 +429,52 @@
 .btn-primary:focus {
   box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.5);
 }
+/* Category Filter */
+.category-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .filter-label {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+  .filter-select-wrapper {
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+    
+    .filter-select {
+      width: 100%;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      color: #333;
+      background-color: #fff;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      
+      &:focus {
+        border-color: #ff6f61;
+        box-shadow: 0 0 5px rgba(255, 105, 97, 0.5);
+        outline: none;
+      }
+    }
+  }
+}
+
+/* No Events Message */
+.no-events-message {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #666;
+
+  .emoji {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+  }
+}
+

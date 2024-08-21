@@ -1,4 +1,10 @@
+   <!-- Return to Home Button -->
+   <a routerLink="/home" class="btn-return-home">
+    <i class="fas fa-home"></i>
+  </a>
+
 <div *ngIf="event" class="container mt-5">
+  <!-- Rating Section -->
   <div class="rating-container">
     <div class="rating">
       <span class="star" *ngFor="let star of stars; let i = index" (click)="rateEvent(i + 1)">
@@ -6,24 +12,28 @@
       </span>
     </div>
   </div>
-  
+
+  <!-- Event Details -->
   <h2>{{ event.title }}</h2>
   <img [src]="event.photo" alt="Event image" class="img-fluid">
   <p><strong>Category:</strong> {{ event.category }}</p>
-  <p><strong>Date:</strong> {{ event.startDate }} - {{ event.endDate }}</p>
+  <p><strong>Date:</strong> {{ event.startDate | date: 'short' }} - {{ event.endDate | date: 'short' }}</p>
   <p><strong>Location:</strong> {{ event.location }}</p>
   <p>{{ event.description }}</p>
-  
+
+  <!-- Subscribe Button -->
   <button class="btn btn-primary" (click)="subscribeToEvent()">Subscribe Now</button>
+
+  <!-- Similar Events Section -->
   <div *ngIf="similarEvents.length > 0" class="similar-events mt-5">
     <h3>Similar Events</h3>
     <div class="event-card" *ngFor="let similarEvent of similarEvents">
-      <img [src]="similarEvent.photo" alt="Event image" class="img-fluid">
+      <img [src]="similarEvent.photo" alt="Similar event image" class="img-fluid">
       <h4>{{ similarEvent.title }}</h4>
       <p>{{ similarEvent.description }}</p>
       <p><strong>Category:</strong> {{ similarEvent.category }}</p>
-      <p><strong>Date:</strong> {{ similarEvent.startDate }} - {{ similarEvent.endDate }}</p>
-      <a [routerLink]="['/event', similarEvent.id]" class="btn btn-primary" (click)="logEvent(similarEvent.id)">View Details</a>
+      <p><strong>Date:</strong> {{ similarEvent.startDate | date: 'short' }} - {{ similarEvent.endDate | date: 'short' }}</p>
+      <a [routerLink]="['/event', similarEvent.id]" class="btn btn-primary">View Details</a>
     </div>
   </div>
 </div>

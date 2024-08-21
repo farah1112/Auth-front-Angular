@@ -41,13 +41,21 @@
     <p class="lead">We are dedicated to organizing the best events for you. Our mission is to deliver unforgettable experiences that leave lasting memories.</p>
   </div>
 </div>
-<!-- Upcoming Events Section with Card Animations -->
-<div id="events" class="upcoming-events-section mt-5 text-center">
-  <h2>Upcoming Events</h2>
-  
-  <div *ngIf="noEventsMessage; else eventsList">
-    <p>{{ noEventsMessage }}</p>
+<!-- Category Filter -->
+<div class="category-filter mb-4">
+  <label for="category" class="filter-label">Filter by Category:</label>
+  <div class="filter-select-wrapper">
+    <select id="category" (change)="onCategoryChange($event)" class="filter-select">
+      <option value="">All Categories</option>
+      <option *ngFor="let category of eventCategories" [value]="category">{{ category }}</option>
+    </select>
   </div>
+</div>
+
+<!-- No Events Message -->
+<div *ngIf="noEventsMessage; else eventsList" class="no-events-message">
+  <p>{{ noEventsMessage }} <span class="emoji">😔</span></p>
+</div>
   <ng-template #eventsList>
     <div class="row">
       <div class="col-md-4" *ngFor="let event of filteredEvents">
@@ -66,6 +74,7 @@
     </button>
   </ng-template>
 </div>
+
 
 
 <!-- All Events Section -->
@@ -123,4 +132,4 @@
   <footer class="footer bg-dark text-white text-center py-4 mt-5">
     <p>&copy; 2024 EventApp. All Rights Reserved.</p>
   </footer>
-</div>
+
