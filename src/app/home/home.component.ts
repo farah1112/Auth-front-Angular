@@ -139,7 +139,7 @@ export class HomeComponent implements OnInit {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   }
 
-  rateEvent(eventId: number): void {
+ /* rateEvent(eventId: number): void {
     const rating = prompt('Enter your rating (1-5):');
     if (rating) {
       const ratingValue = parseInt(rating);
@@ -157,7 +157,27 @@ export class HomeComponent implements OnInit {
         alert('Please enter a valid rating between 1 and 5.');
       }
     }
-  }
+  }*/
+    rateEvent(eventId: number): void {
+      const rating = prompt('Enter your rating (1-5):');
+      if (rating) {
+        const ratingValue = parseInt(rating, 10);
+        if (ratingValue >= 1 && ratingValue <= 5) {
+          this.eventService.rateEvent(eventId, ratingValue).subscribe({
+            next: (response: any) => {
+              alert(response.message); // Handle the success message from the response
+            },
+            error: (err: any) => {
+              console.error('Error submitting rating:', err);
+              alert('Oops! There was an error submitting your rating.');
+            }
+          });
+        } else {
+          alert('Please enter a valid rating between 1 and 5.');
+        }
+      }
+    }
+    
   onCategoryChange(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
     const selectedCategory = selectElement.value;
@@ -171,6 +191,11 @@ export class HomeComponent implements OnInit {
     }
      // Set no events message if no events are found
   this.noEventsMessage = this.filteredEvents.length === 0 ? 'No events found for this category' : '';
+  }
+  isExpired(event: EventModel): boolean {
+    const today = new Date();
+    const endDate = new Date(event.endDate); // Assuming endDate is a property of EventModel
+    return endDate < today;
   }
   
 }

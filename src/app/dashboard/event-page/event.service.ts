@@ -22,20 +22,23 @@ export class EventService {
   getEventById(id: number): Observable<EventModel> {
     return this.http.get<EventModel>(`${this.baseUrl}/event/${id}`);
   }
-  addEvent(formData: FormData): Observable<EventModel> {
-    return this.http.post<EventModel>(`${this.baseUrl}/event/add`, formData);
+  addEvent(formData: FormData): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/event/add`, formData, { responseType: 'text' as 'json' });
   }
+  
 
   deleteEvent(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
-  updateEvent(id: number, formData: FormData): Observable<EventModel> {
-    return this.http.put<EventModel>(`${this.baseUrl}/event/${id}`, formData);
-  }
-  rateEvent(eventId: number, rating: number): Observable<any> {
-    return this.http.put(`${this.baseUrl}/event/${eventId}/rate`, { rating });
-  }
+  updateEvent(id: number, formData: FormData): Observable<any> {
+    return this.http.put(`${this.baseUrl}/event/${id}`, formData, { responseType: 'text' });
+ }
+ 
+ rateEvent(eventId: number, rating: number): Observable<any> {
+  return this.http.put(`${this.baseUrl}/event/${eventId}/rate`, { rating }, { responseType: 'json' });
+}
+
   getSimilarEvents(eventId: number): Observable<EventModel[]> {
     return this.http.get<EventModel[]>(`${this.baseUrl}/similar/${eventId}`);
   }

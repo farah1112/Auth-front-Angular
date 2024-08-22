@@ -477,4 +477,39 @@
     margin-left: 0.5rem;
   }
 }
+.event-card {
+  border: 1px solid #ddd; /* Border color */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Prevent overflow */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+  }
+
+  .card-img-top {
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Cover image inside card */
+  }
+
+  .card-body {
+    padding: 1rem; /* Padding for content */
+    
+    .card-title {
+      font-size: 1.25rem; /* Font size for title */
+      font-weight: bold; /* Bold title */
+    }
+
+    .card-text {
+      font-size: 1rem; /* Font size for description */
+      color: #666; /* Lighter color for text */
+    }
+
+    .btn {
+      margin-top: 0.5rem; /* Spacing for buttons */
+    }
+  }
+}
 
